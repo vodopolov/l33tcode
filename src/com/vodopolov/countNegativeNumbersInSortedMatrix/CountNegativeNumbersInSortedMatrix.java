@@ -1,4 +1,4 @@
-package com.vodopolov.CountNegativeNumbersInSortedMatrix;
+package com.vodopolov.countNegativeNumbersInSortedMatrix;
 
 /**
  * Created by Anton on 19.02.2020.

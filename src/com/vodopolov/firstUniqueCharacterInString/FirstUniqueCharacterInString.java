@@ -1,4 +1,4 @@
-package com.vodopolov.FirstUniqueCharacterInString;
+package com.vodopolov.firstUniqueCharacterInString;
 
 import java.util.HashMap;
 
