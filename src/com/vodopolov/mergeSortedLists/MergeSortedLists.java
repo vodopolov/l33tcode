@@ -4,42 +4,26 @@ package com.vodopolov.mergeSortedLists;
  * Created by Anton on 16.02.2020.
  */
 public class MergeSortedLists {
-    public ListNode mergeKLists(ListNode[] lists) {
-        return new ListNode(0);
-    }
-
-    private ListNode result;
-    private ListNode lastNode;
-
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if (l1 == null && l2 == null) return result;
-        if (l1 == null) {
-            result.next = l2;
-            mergeTwoLists(null, l2);
-        } else if (l2 == null) {
-            result.next = l1;
-            mergeTwoLists(l1.next, null);
+        ListNode result;
+        if (l1 == null && l2 == null) return null;
+        if (l1 != null && l2 != null) {
+            result = new ListNode(l1.val < l2.val ? l1.val : l2.val);
+            result.next = mergeTwoLists(l1.val < l2.val ? l1.next : l1, l1.val < l2.val ? l2 : l2.next);
+        } else if (l1 != null) {
+            result = l1;
         } else {
-            if (l1.val >= l2.val) {
-                helper(l1, l2);
-            } else {
-                helper(l2, l1);
-            }
+            result = l2;
         }
         return result;
     }
 
-    private void helper(ListNode nodeToAdd, ListNode nodeToPass) {
-        ListNode node = new ListNode(nodeToAdd.val);
-        if (result == null) result = node;
-        else if (result.next == null) {
-            lastNode = node;
-            result.next = lastNode;
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
         }
-        else {
-            lastNode.next = node;
-            lastNode = node;
-        }
-        mergeTwoLists(nodeToPass, nodeToAdd.next);
     }
 }
